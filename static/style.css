@@ -1,0 +1,18 @@
+.cover{
+    background: rgb(160, 170, 171);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+     overflow-y: scroll; /* Yalnızca dikey scroll çubuğunu göstermek için */
+    /* veya */
+    overflow: auto; /* Yatay ve dikey scroll çubuklarını otomatik olarak göstermek için */
+}
+
+body, html {
+    overflow-y: scroll; /* Yalnızca dikey scroll çubuğunu göstermek için */
+    /* veya */
+    overflow: auto; /* Yatay ve dikey scroll çubuklarını otomatik olarak göstermek için */
+}
+
+
+

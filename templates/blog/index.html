@@ -1,0 +1,53 @@
+{% extends 'partials/base.html' %}
+{% block title %}Ana Sayfa{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="cover">
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-4">
+                <div class="card my-3 shadow">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <input class="btn btn-primary btn-block" type="submit" value="PAYLAŞ">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {% for post in posts %}
+                <div class="card shadow my-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img class="img-thumbnail img-fluid border-info" src="{{ post.author.profilemodel.image.url }}" alt="img">
+                                <small class="text-success">{{ post.date_created }}</small>
+                            </div>
+                            <div class="col-md-8">
+                                <a class="h3" href="{% url 'blog-post-detail' post.id %}">{{ post.title }}</a>
+                                <hr>
+
+                                <p class="text-justify my-3">
+                                    {{ post.content }}
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <p class="text-justify my-3 text-info">
+                            {{ post.author }} tarafından tayınlandı.
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
